@@ -43,8 +43,8 @@ pipeline {
 
         stage("Deploy") {
             steps {
-                sh "docker rm -f ${CONTAINER_NAME} || true"
-                sh "docker run -d --name ${CONTAINER_NAME} --memory='512m' --cpus='0.5' --network techstore-ci-net -p 5001:5000 -e DB_PASSWORD=\"$DB_PASSWORD\" ${IMAGE_NAME}:${BUILD_NUMBER}"
+                sh 'docker rm -f ${CONTAINER_NAME} || true'
+                sh 'docker run -d --name ${CONTAINER_NAME} --memory='512m' --cpus='0.5' --network techstore-ci-net -p 5001:5000 -e DB_PASSWORD=\"$DB_PASSWORD\" ${IMAGE_NAME}:${BUILD_NUMBER}'
             }
         }
 
